@@ -64,7 +64,7 @@ onUnmounted(() => {
   <nav
     :class="
       cn(
-        'invisible absolute left-0 right-0 top-16 z-50 h-0 w-full overflow-y-hidden bg-inherit transition-all duration-300 lg:visible lg:static lg:flex lg:h-auto lg:w-auto lg:flex-row',
+        'invisible absolute left-0 right-0 top-16 z-50 h-0 w-full overflow-y-hidden bg-primary transition-all duration-300 lg:visible lg:static lg:flex lg:h-auto lg:w-auto lg:flex-row',
         {
           'visible flex h-[calc(100vh-64px)] flex-col': props.open
         },
