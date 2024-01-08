@@ -18,6 +18,10 @@ const props = defineProps({
   class: {
     type: String,
     required: false
+  },
+  toggle: {
+    type: Function,
+    required: true
   }
 })
 </script>
@@ -33,6 +37,6 @@ const props = defineProps({
       )
     "
   >
-    <NavbarLink v-for="link of links" :key="link.name" :link="link" />
+    <NavbarLink v-for="link of links" :key="link.name" :link="link" @action="props.toggle" />
   </nav>
 </template>

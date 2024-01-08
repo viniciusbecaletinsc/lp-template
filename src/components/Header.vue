@@ -19,6 +19,6 @@ function handleToggle() {
 
     <NavbarToggle :open="open" :toggle="handleToggle" />
 
-    <NavbarMenu :open="open" />
+    <NavbarMenu :open="open" :toggle="handleToggle" />
   </Navbar>
 </template>

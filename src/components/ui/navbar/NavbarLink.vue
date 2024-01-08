@@ -10,13 +10,14 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { link } = props
+defineEmits(['action'])
 </script>
 
 <template>
   <a
     :class="cn('block w-full rounded-none px-4 py-2 hover:bg-[rgba(0,0,0,0.2)] lg:rounded-sm')"
-    :href="link.path"
+    :href="props.link.path"
+    @click="$emit('action')"
     >{{ link.name }}</a
   >
 </template>
