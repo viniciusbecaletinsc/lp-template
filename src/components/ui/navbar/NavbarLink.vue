@@ -17,7 +17,7 @@ defineEmits(['action'])
   <a
     :class="cn('block w-full rounded-none px-4 py-2 hover:bg-[rgba(0,0,0,0.2)] lg:rounded-sm')"
     :href="props.link.path"
-    @click="$emit('action')"
+    @click.prevent="$emit('action', props.link.path)"
     >{{ link.name }}</a
   >
 </template>

@@ -24,6 +24,18 @@ const props = defineProps({
     required: true
   }
 })
+
+function handleScrollToSection(id: string) {
+  const section = document.querySelector(id.replace('/', ''))!
+
+  section.scrollIntoView({
+    behavior: 'smooth'
+  })
+
+  if (props.open) {
+    props.toggle()
+  }
+}
 </script>
 
 <template>
@@ -37,6 +49,11 @@ const props = defineProps({
       )
     "
   >
-    <NavbarLink v-for="link of links" :key="link.name" :link="link" @action="props.toggle" />
+    <NavbarLink
+      v-for="link of links"
+      :key="link.name"
+      :link="link"
+      @action="handleScrollToSection"
+    />
   </nav>
 </template>
