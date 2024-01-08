@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import LogoImage from '@/assets/logo.svg'
 
 import { Navbar, NavbarLogo, NavbarToggle, NavbarMenu } from '@/components/ui/navbar'
 
@@ -14,7 +13,7 @@ function handleToggle() {
 <template>
   <Navbar>
     <NavbarLogo>
-      <img class="max-h-8 text-white" :src="LogoImage" alt="" width="144px" height="32px" />
+      <img class="max-h-8 text-white" src="../img/logo.svg" alt="" width="144px" height="32px" />
     </NavbarLogo>
 
     <NavbarToggle :open="open" :toggle="handleToggle" />
