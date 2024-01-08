@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
 
 import { NavbarLink } from '.'
 
 const links = [
-  { name: 'Home', path: '/#home' },
-  { name: 'About', path: '/#about' },
-  { name: 'Services', path: '/#services' },
-  { name: 'Contact', path: '/#contact' }
+  { name: 'Home', path: '/#home', target: '_self' },
+  { name: 'About', path: '/#about', target: '_self' },
+  { name: 'Services', path: '/#services', target: '_self' },
+  { name: 'Contact', path: '/#contact', target: '_self' },
+  { name: 'Google', path: 'https://google.com.br', target: '_blank' }
 ]
 
 const props = defineProps({
@@ -25,8 +27,12 @@ const props = defineProps({
   }
 })
 
-function handleScrollToSection(id: string) {
-  const section = document.querySelector(id.replace('/', ''))!
+function handleScrollToSection(event: Event) {
+  event.preventDefault()
+
+  const target = event.currentTarget as HTMLAnchorElement
+  const href = target.getAttribute('href')?.replace('/', '')!
+  const section = document.querySelector(href)!
 
   section.scrollIntoView({
     behavior: 'smooth'
@@ -36,6 +42,22 @@ function handleScrollToSection(id: string) {
     props.toggle()
   }
 }
+
+onMounted(() => {
+  const links = document.querySelectorAll('nav > a[href^="/#"]')
+
+  for (const link of links) {
+    link.addEventListener('click', handleScrollToSection)
+  }
+})
+
+onUnmounted(() => {
+  const links = document.querySelectorAll('nav > a[href^="/#"]')
+
+  for (const link of links) {
+    link.removeEventListener('click', handleScrollToSection)
+  }
+})
 </script>
 
 <template>
@@ -49,11 +71,6 @@ function handleScrollToSection(id: string) {
       )
     "
   >
-    <NavbarLink
-      v-for="link of links"
-      :key="link.name"
-      :link="link"
-      @action="handleScrollToSection"
-    />
+    <NavbarLink v-for="link of links" :key="link.name" :link="link" />
   </nav>
 </template>

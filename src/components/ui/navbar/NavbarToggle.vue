@@ -20,7 +20,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <Button :class="cn('lg:hidden', props.class)" type="button" size="icon" @action="props.toggle">
+  <Button
+    :class="cn('lg:hidden', props.class)"
+    type="button"
+    variant="ghost"
+    size="icon"
+    @action="props.toggle"
+  >
     <span
       :class="
         cn(

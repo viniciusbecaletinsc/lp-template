@@ -5,6 +5,7 @@ interface Props {
   link: {
     name: string
     path: string
+    target: string
   }
 }
 
@@ -17,7 +18,7 @@ defineEmits(['action'])
   <a
     :class="cn('block w-full rounded-none px-4 py-2 hover:bg-[rgba(0,0,0,0.2)] lg:rounded-sm')"
     :href="props.link.path"
-    @click.prevent="$emit('action', props.link.path)"
+    :target="props.link.target"
     >{{ link.name }}</a
   >
 </template>
