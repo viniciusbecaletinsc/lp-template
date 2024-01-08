@@ -1,35 +1,38 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils'
 
-import { NavbarLink } from '.';
+import { NavbarLink } from '.'
 
 const links = [
   { name: 'Home', path: '/#home' },
   { name: 'About', path: '/#about' },
   { name: 'Services', path: '/#services' },
-  { name: 'Contact', path: '/#contact' },
+  { name: 'Contact', path: '/#contact' }
 ]
 
 const props = defineProps({
   open: {
     type: Boolean,
-    required: true,
+    required: true
   },
   class: {
     type: String,
-    required: false,
-  },
+    required: false
+  }
 })
 </script>
 
 <template>
   <nav
     :class="
-      cn('hidden col-span-full basis-full lg:col-span-1 lg:block lg:basis-auto', { 'block': props.open }, { 'hidden': !props.open })
+      cn(
+        'invisible absolute left-0 right-0 top-16 z-50 h-0 w-full overflow-y-hidden bg-primary transition-all duration-300 lg:visible lg:static lg:flex lg:h-auto lg:w-auto lg:flex-row',
+        {
+          'visible flex h-[calc(100vh-64px)] flex-col': props.open
+        }
+      )
     "
   >
-    <div class="flex items-center justify-center flex-col lg:flex-end lg:flex-row">
-      <NavbarLink v-for="link of links" :key="link.name" :link="link" />
-    </div>
+    <NavbarLink v-for="link of links" :key="link.name" :link="link" />
   </nav>
 </template>

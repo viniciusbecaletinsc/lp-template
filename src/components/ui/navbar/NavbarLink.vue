@@ -15,13 +15,10 @@ const { link } = props
 
 <template>
   <a
-    :class="
-      cn('block w-full px-4 py-2 text-center hover:bg-[rgba(0,0,0,0.2)] sm:text-left lg:hover:bg-transparent')
-    "
+    :class="cn('block w-full rounded-none px-4 py-2 hover:bg-[rgba(0,0,0,0.2)] lg:rounded-sm')"
     :href="link.path"
-  >{{ link.name }}</a>
+    >{{ link.name }}</a
+  >
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
