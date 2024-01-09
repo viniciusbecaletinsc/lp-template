@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { Navbar, NavbarLogo, NavbarToggle, NavbarMenu } from '@/components/ui/navbar'
+import { Navbar, NavbarLogo, NavbarToggle, NavbarMenu, NavbarLink } from '@/components/ui/navbar'
+
+import { data } from '../constants/index'
 
 const open = ref(false)
 
@@ -18,6 +20,8 @@ function handleToggle() {
 
     <NavbarToggle :open="open" :toggle="handleToggle" />
 
-    <NavbarMenu :open="open" :toggle="handleToggle" />
+    <NavbarMenu :open="open" :toggle="handleToggle">
+      <NavbarLink v-for="link of data.links.navbar" :key="link.name" :link="link" />
+    </NavbarMenu>
   </Navbar>
 </template>

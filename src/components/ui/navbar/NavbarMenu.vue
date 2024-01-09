@@ -2,16 +2,6 @@
 import { onMounted, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
 
-import { NavbarLink } from '.'
-
-const links = [
-  { name: 'Home', path: '/#home', target: '_self' },
-  { name: 'About', path: '/#about', target: '_self' },
-  { name: 'Services', path: '/#services', target: '_self' },
-  { name: 'Contact', path: '/#contact', target: '_self' },
-  { name: 'Google', path: 'https://google.com.br', target: '_blank' }
-]
-
 const props = defineProps({
   open: {
     type: Boolean,
@@ -72,6 +62,6 @@ onUnmounted(() => {
       )
     "
   >
-    <NavbarLink v-for="link of links" :key="link.name" :link="link" />
+    <slot />
   </nav>
 </template>
