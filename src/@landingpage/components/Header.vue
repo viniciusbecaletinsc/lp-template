@@ -13,7 +13,7 @@ function handleToggle() {
 </script>
 
 <template>
-  <Navbar>
+  <Navbar :open="open">
     <NavbarLogo>
       <img class="max-h-8 text-white" src="../img/logo.svg" alt="" width="144px" height="32px" />
     </NavbarLogo>
